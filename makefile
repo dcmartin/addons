@@ -16,7 +16,7 @@ ALL = $(wildcard addon-*)
 ## targets
 ##
 
-TARGETS = all tidy clean distclean build push publish verify build-service push-service start-service publish-service test-service verify-service clean-service service-build service-push service-publish service-verify service-test service-stop service-clean horizon
+TARGETS = pull all tidy clean distclean build push publish verify build-service push-service start-service publish-service test-service verify-service clean-service service-build service-push service-publish service-verify service-test service-stop service-clean horizon
 
 ## actual
 
@@ -36,7 +36,7 @@ $(TARGETS):
 	  t=$$(echo "$${dir}" | sed 's/addon-//') && $(MAKE) -C $${dir}/$${t} $@; \
 	done
 
-PHONY += ${ALL} default all build run check stop push publish verify clean start test sync
+PHONY += ${ALL} default pull all build run check stop push publish verify clean start test sync
 
 CLOC.md: .gitignore .
 	@echo "${MC}>>> MAKE --" $$(date +%T) "-- counting source code""${NC}" &> /dev/stderr
